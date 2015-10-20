@@ -40,6 +40,13 @@ var SubmitCommInfo = function(username, age, gender, address, contactNo, meetUpL
   infoRow.appendChild(userNameRow);
   contactColumn.appendChild(infoRow);
   console.log("Place row working");
+
+  for (var i=0; i<categories.length; i++) {
+    var contentInfoContact = document.createElement('td');
+    contentInfoContact.appendChild(document.createTextNode(this.infoArray[i]));
+    infoRow.appendChild(contentInfoContact);
+    console.log("pushing data properly");
+    }
 };
 
 var Sab = new SubmitCommInfo('Sab Tee', 24, "Female", "588 Bell St", "6178173389", "UW", "");
