@@ -22,8 +22,7 @@ for (var i=0; i<categories.length; i++) {
   headerRow.appendChild(categoriesHeader);
   console.log("Categories header working");
 }
-// HEADER OF CONTACT INFO TABLE END
-
+// OBJECT CONSTRUCTOR FOR EACH USER START
 var SubmitCommInfo = function(username, age, gender, address, contactNo, meetUpLoc, extraInfo) {
   this.username = username;
   this.age = age;
@@ -32,21 +31,49 @@ var SubmitCommInfo = function(username, age, gender, address, contactNo, meetUpL
   this.contactNo = contactNo;
   this.meetUpLoc = meetUpLoc;
   this.extraInfo = extraInfo;
-  this.infoArray = [];
-
+  this.infoArray = [age, gender, address, contactNo, meetUpLoc, extraInfo];
+//CREATING TABLE ROW FOR NEW USER
   var infoRow = document.createElement('tr');
   var userNameRow = document.createElement('td');
   userNameRow.appendChild(document.createTextNode(this.username));
   infoRow.appendChild(userNameRow);
   contactColumn.appendChild(infoRow);
   console.log("Place row working");
-
+//PUSHING OBJECT TO TABLE
   for (var i=0; i<categories.length; i++) {
     var contentInfoContact = document.createElement('td');
     contentInfoContact.appendChild(document.createTextNode(this.infoArray[i]));
     infoRow.appendChild(contentInfoContact);
-    console.log("pushing data properly");
+    console.log("Pushing data of object properly");
     }
 };
+//NEW USER SUBMIT FUNCTION
+var newUserSubmit = function(e) {
+  e.preventDefault();
+  var newUser = document.getElementById('username');
+  var newAge = document.getElementById('age');
+  var newFemale = document.getElementById('female');
+  var newMale = document.getElementById('male');
+  var newAddress = document.getElementById('address');
+  var newContactNo = document.getElementById('contactNo');
+  var newMeetUpLoc = document.getElementById('meetUpLoc');
+  var newExtraInfo = document.getElementById('extraInfo');
 
-var Sab = new SubmitCommInfo('Sab Tee', 24, "Female", "588 Bell St", "6178173389", "UW", "");
+  var newUserForm = new SubmitCommInfo((newUser.value.toUpperCase()), newAge.value, newFemale.value,newAddress.value, newContactNo.value, newMeetUpLoc.value, newExtraInfo.value);
+  console.log("Submit form working");
+
+  newUser.value = null;
+  newAge.value = null;
+  newFemale.value = null;
+  newMale.value = null;
+  newAddress.value = null;
+  newContactNo.value = null;
+  newMeetUpLoc.value = null;
+  newExtraInfo.value = null;
+};
+
+//TEST CONTACT INFO
+var Sab = new SubmitCommInfo('SABRINA', 24, "Female", "500 Bell St, ExcitingTown, WA", "0123456789", "Primary: UW Secondary: SEATAC", "");
+//EVENT HANDLER TO SUBMIT BUTTON
+var submitButton = document.getElementById('submitButton');
+submitButton.addEventListener('click', newUserSubmit);

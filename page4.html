@@ -25,30 +25,30 @@
     <form id="commForm">
       <fieldset>
       <legend>Contact Details</legend>
-      <label id="username">Name:<br/>
-        <input type="text" name="username"maxlength="50" />
+      <label>Name:<br/>
+        <input id="username" type="text" name="username"maxlength="50" />
       </label><br/><br/>
-      <label for="age">Age:<br/>
-        <input type="text" name="age" maxlength="2"/>
+      <label>Age:<br/>
+        <input id="age" type="text" name="age" maxlength="2"/>
       </label><br/><br/>
       Gender:
-      <input id="female" type="radio" name="gender" value="f">
+      <input id="female" type="radio" name="gender" value="Female">
       <label for="female">Female</label>
-      <input id="male" type="radio" name="gender" value="m">
+      <input id="male" type="radio" name="gender" value="Male">
       <label for="male">Male</label><br/><br/>
-      <label for="address">Address:</label><br/>
-        <textarea name="address" cols="50" rows="4"></textarea><br/><br/>
-      <label for="contactNo">Contact Number:
-        <input type="text" name="contactNo"maxlength="10" />
+      <label>Address:</label><br/>
+        <textarea id="address" name="address" cols="50" rows="4"></textarea><br/><br/>
+      <label>Contact Number:
+        <input id="contactNo" type="text" name="contactNo"maxlength="10" />
       </label><br/><br/>
-      <label for="meetUpLoc">Meet Up Locations:</label><br/>
-      <textarea name="meetUpLoc" cols="50" rows="6">Pick two places to meet up with your family - clearly state a primary and secondary location:
-
-Primary:
+      <label>Meet Up Locations</label><br/>
+      <label>Pick two places to meet up with your family - clearly state a primary and secondary location:</label><br/>
+      <textarea id="meetUpLoc" name="meetUpLoc" cols="50" rows="6">Primary:
 
 Secondary: </textarea><br/><br>
-      <label for="extraInfo">Additional Information:</label><br/>
-      <textarea name="extraInfo" cols="50" rows="10">Anything else you want people to know? Enter extra emergency details here.</textarea><br/>
+      <label>Additional Information</label><br/>
+      <label>Anything else you want people to know? Enter extra emergency details here:</label><br/>
+      <textarea name="extraInfo" cols="50" rows="10" id="extraInfo"></textarea><br/>
       <input id="submitButton" type="submit" name="submit" value="Submit" />
       </fieldset>
     </form>
