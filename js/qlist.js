@@ -10,17 +10,14 @@ var quickList =   ['1872, December 14: a strong earthquake in the Cascade Mounta
                   'There are more earthquakes in Alaska than in California.',
                   'It is estimated that there are several million earthquakes in the world each year. Many of these earthquakes go undetected because they occur in remote areas, mostly under the sea, or have very small magnitudes.'];
 
-
 //Random number generator for quick list.
-var randomNumber = function() {
-  return Math.floor((Math.random() * quickList.length) +1);
-};
+function randomNumber() {
+  return Math.floor(Math.random() * quickList.length);
+}
 
 //Pick item from quick list.
-var pickItem = quickList[i];
+var pickItem = quickList[randomNumber()];
 
-
-//Print item from quick list either by opening the index page for the first time or by refreshing the screen.
-/*var printItem = document.getElementById('qlist');
+//Print item from quick list.
+var printItem = document.getElementById('qlist');
 printItem.textContent = pickItem;
-*/
