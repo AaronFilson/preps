@@ -17,7 +17,7 @@ var randomNumber = function() {
 };
 
 //Pick item from quick list.
-var pickItem = quickList[randomNumber];
+var pickItem = quickList[i];
 
 
 //Print item from quick list either by opening the index page for the first time or by refreshing the screen.
