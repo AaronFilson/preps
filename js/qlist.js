@@ -6,7 +6,7 @@ var quickList =   ['1872, December 14: a strong earthquake in the Cascade Mounta
                   '1965, April 29: In Olympia an earthquake had a magnitude of 6.7.',
                   'There are 2 basic types of earthquakes. A strike-slip earthquake occurs when the rock on one side of a fault slides horizontally past the other. In a dip-slip earthquake, the fault is at an angle to the surface of the earth and the movement of the rock is up or down.',
                   'The largest earthquake ever recorded occurred in Chile in 1960: it had a magnitude of 9.5.',
-                  '2010, January 12: an earthquake of magnitude 7.0 occurred 10 miles off the coast from Port-Au-Prince, Haiti, killing more than 200,000 people. The earthquake did not, however, came as a surprise to seismologists who predicted the fault slip just a week earlier. Governments and people often ignore the predictions of earthquakes.',
+                  '2010, January 12: an earthquake of magnitude 7.0 occurred 10 miles off the coast from Port-Au-Prince, Haiti, killing more than 200,000 people. The earthquake did not, however, come as a surprise to seismologists who predicted the fault slip just a week earlier. Governments and people often ignore the predictions of earthquakes.',
                   'There are more earthquakes in Alaska than in California.',
                   'It is estimated that there are several million earthquakes in the world each year. Many of these earthquakes go undetected because they occur in remote areas, mostly under the sea, or have very small magnitudes.'];
 
