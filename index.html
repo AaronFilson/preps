@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html>
+
+  <!-- Pageicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="img/mountains.png">
+
   <head>
     <title>Prepare Yo-self</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
 
-  <body>
-
-    <div id="navBar">
+  <header>
+    <nav id="navBar">
     <ul>
-      <li class="activePage"><a href="index.html">HOME</a></li>
-      <li><a href="page2.html">PAGE 2</a></li>
-      <li><a href="page3.html">PAGE 3</a></li>
-      <li><a href="page4.html">PAGE 4</a></li>
-      <li><a href="about-us.html">ABOUT US</a></li>
+      <li class="activePage"><a href="index.html"><span>HOME</span></a></li>
+      <li><a href="page2.html"><span>PAGE 2</span></a></li>
+      <li><a href="page3.html"><span>PAGE 3</span></a></li>
+      <li><a href="page4.html"><span>PAGE 4</span></a></li>
+      <li><a href="about-us.html"><span>ABOUT US</span></a></li>
     </ul>
-    </div>
+    </nav>
+  </header>
+
+  <body>
 
     <h1 data-sr="enter top, hustle 50px over 2s">PREPARE YO-SELF</h1>
 
     <div>
-      <h2>How to prepare for an Earthquake in the Puget Sound Region:</h2>
+      <h5>How to prepare for an Earthquake in the Puget Sound Region:</h5>
       <ul>
         <li>React Safely</li>
         <li>Take Cover</li>
@@ -30,17 +39,23 @@
       </ul>
     </div>
 
-    <div>
-      <p>Please continue to Page 2 to create your own personal preparation list.</p>
-    </div>
+    <hr />
 
     <div>
-      <p>Placeholder for tip of the day/"Did you know..." section.</p>
+      <h6><strong><em>Click <a href="page2.html">here to Page 2</a> to start your own personal preparation list.</em></strong></h6>
+    </div>
+
+    <hr />
+
+    <div>
+      <h6><strong>Quick Facts:</strong></h6>
+      <h6 id="qlist"></h6>
     </div>
 
     <script src='js/scrollReveal.js'></script>
     <script>
       window.sr = new scrollReveal();
     </script>
+    <script src='js/qlist.js'></script>
   </body>
 </html>
