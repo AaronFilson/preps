@@ -1,10 +1,3 @@
-// var userInfo = function (perList, comListArg) {
-//     var personalizedList = new pList();
-//     personalizedList = perList;
-//     var commList = new cList();
-//     commList = comListArg;
-// };
-
 // HEADER OF CONTACT INFO TABLE START
 var contactColumn = document.getElementById("contactInfo");
 var headerRow = document.createElement('tr');
@@ -23,7 +16,7 @@ for (var i=0; i<categories.length; i++) {
   console.log("Categories header working");
 }
 // OBJECT CONSTRUCTOR FOR EACH USER START
-var SubmitCommInfo = function(username, age, gender, address, contactNo, meetUpLoc, extraInfo) {
+var CList = function(username, age, gender, address, contactNo, meetUpLoc, extraInfo, key) {
   this.username = username;
   this.age = age;
   this.gender = gender;
@@ -31,7 +24,8 @@ var SubmitCommInfo = function(username, age, gender, address, contactNo, meetUpL
   this.contactNo = contactNo;
   this.meetUpLoc = meetUpLoc;
   this.extraInfo = extraInfo;
-  this.infoArray = [age, gender, address, contactNo, meetUpLoc, extraInfo];
+  this.key = key;
+  this.infoArray = [age, gender, address, contactNo, meetUpLoc, extraInfo, key];
 //CREATING TABLE ROW FOR NEW USER
   var infoRow = document.createElement('tr');
   var userNameRow = document.createElement('td');
@@ -46,34 +40,70 @@ var SubmitCommInfo = function(username, age, gender, address, contactNo, meetUpL
     infoRow.appendChild(contentInfoContact);
     console.log("Pushing data of object properly");
     }
+//LOCAL STORAGE
+  var InfoToSave = JSON.stringify(this.username+","+this.infoArray);
+  localStorage.setItem(this.key, this.username+","+this.infoArray);
+  var getInfo = localStorage.getItem(this.username+","+this.infoArray);
+  JSON.parse(getInfo);
+  console.log("Local storage working");
 };
 //NEW USER SUBMIT FUNCTION
 var newUserSubmit = function(e) {
   e.preventDefault();
   var newUser = document.getElementById('username');
   var newAge = document.getElementById('age');
-  var newFemale = document.getElementById('female');
-  var newMale = document.getElementById('male');
+  var newGender = document.getElementById('gender');
   var newAddress = document.getElementById('address');
   var newContactNo = document.getElementById('contactNo');
   var newMeetUpLoc = document.getElementById('meetUpLoc');
   var newExtraInfo = document.getElementById('extraInfo');
-
-  var newUserForm = new SubmitCommInfo((newUser.value.toUpperCase()), newAge.value, newFemale.value,newAddress.value, newContactNo.value, newMeetUpLoc.value, newExtraInfo.value);
+//CREATING NEW OBJECT
+  var newUserForm = new CList((newUser.value.toUpperCase()), newAge.value, (newGender.value.toUpperCase()), newAddress.value, newContactNo.value, newMeetUpLoc.value, newExtraInfo.value, Math.random());
   console.log("Submit form working");
-
+//RESETTING FORM
   newUser.value = null;
   newAge.value = null;
-  newFemale.value = null;
-  newMale.value = null;
+  newGender.value = null;
   newAddress.value = null;
   newContactNo.value = null;
-  newMeetUpLoc.value = null;
+  newMeetUpLoc.value = "Primary: Secondary:";
   newExtraInfo.value = null;
 };
 
 //TEST CONTACT INFO
-var Sab = new SubmitCommInfo('SABRINA', 24, "Female", "500 Bell St, ExcitingTown, WA", "0123456789", "Primary: UW Secondary: SEATAC", "");
+var Sab = new CList('SABRINA', 24, "FEMALE", "511 Boren Ave, Seattle, WA", "0123456789", "Primary: UW Secondary: SEATAC", "", 1);
+
 //EVENT HANDLER TO SUBMIT BUTTON
 var submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', newUserSubmit);
+
+// LOCAL STORAGE SET TO LINK TO PAGE 2
+var PList = function() {
+};
+
+var UserInfo = function (perList, comListArg) {
+    var personalizedList = new PList();
+    personalizedList = perList;
+    var commList = new CList();
+    commList = comListArg;
+};
+
+// var localObj = new UserInfo({},{});
+
+UserInfo.prototype.setToStore = function() {
+    localStorage.setItem(commList[7], JSON.stringify(this));
+};
+
+UserInfo.prototype.getFromStore = function(key) {
+    // key is magic number 1;
+    var temp = localStorage.getItem(key);
+    var unstringedTemp;
+    if(temp != 'null') {
+        unstringedTemp = JSON.parse(temp);
+        var getSaves = localStorage.getItem(key);
+        JSON.parse(getSaves);
+    }
+      this.personalizedList = unstringedTemp.personalizedList;
+      this.commList = unstringedTemp.commList;
+      JSON.parse(temp);
+};
