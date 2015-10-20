@@ -23,16 +23,12 @@ body {
 }
 
 body h1 {
-  margin: 50px;
+  margin: 25px;
 }
 
 p {
   text-align: center;
   font-size: 40px;
-}
-
-.activePage {
-  background-color: #ACCFCC;
 }
 
 article div {
@@ -42,6 +38,12 @@ article div {
   text-align: center;
 }
 
+article div p {
+  font-size: 24px;
+  font-family: Garamond;
+}
+
+/*ABOUT US PAGE START*/
 .bioPic {
   width: 145px;
   border-radius: 100px;
@@ -49,10 +51,11 @@ article div {
   margin:40px;
   border: solid black 4px;
 }
+/*ABOUT US PAGE END*/
 
-article div p {
-  font-size: 24px;
-  font-family: Garamond;
+/*NAV BAR STUFF START*/
+.activePage {
+  background-color: #ACCFCC;
 }
 
 #navBar {
@@ -89,3 +92,4 @@ article div p {
   letter-spacing: 0.1em;
   position: relative;
 }
+/*NAV BAR STUFF END*/
