@@ -40,7 +40,6 @@ var TableMaker = function(username, age, gender, address, contactNo, meetUpLoc, 
     console.log("Pushing data of object properly");
     }
 };
-
 //NEW USER SUBMIT FUNCTION
 var newUserSubmit = function(e) {
   e.preventDefault();
@@ -53,10 +52,11 @@ var newUserSubmit = function(e) {
   var newExtraInfo = document.getElementById('extraInfo');
 //CREATING NEW OBJECT
   cList.allMyTables.push(new TableMaker((newUser.value.toUpperCase()), newAge.value, (newGender.value.toUpperCase()), newAddress.value, newContactNo.value, newMeetUpLoc.value, newExtraInfo.value));
+  profile = newUser.value.toUpperCase();
+  console.log("New profile name: "+profile);
   console.log("Submit form working");
-
+//CALLING THE SAVE TO LOCAL STORAGE
   setToStore();
-
 //RESETTING FORM
   newUser.value = null;
   newAge.value = null;
@@ -68,45 +68,45 @@ var newUserSubmit = function(e) {
 };
 //TEST CONTACT INFO
 var Sab = new TableMaker('SABRINA', 24, "FEMALE", "511 Boren Ave, Seattle, WA", "0123456789", "Primary: UW Secondary: SEATAC", "");
-
 //EVENT HANDLER TO SUBMIT BUTTON
 var submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', newUserSubmit);
-
+//PLACE HOLDER FOR PAGE2 LOCAL STORE
 var pList = {
 };
-
+//CREATING PAGE4 LOCAL STORE UNDER USERINFO
 var cList = {
   allMyTables: []
 };
-
+//PROFILE CONSTRUCTOR
 var UserInfo = function () {
     this.personalizedList = pList;
     this.commList = cList;
     this.profile = 'SABRINA';
     console.log("UserInfo is running");
 };
-
-//RENDER USERINFO
+//VARIABLE THAT CREATES A NEW PROFILE CONSTRUCTOR
 var localObj = new UserInfo();
-
+//FUNCTION TO SAVE TO LOCAL STORAGE
 function setToStore() {
     var temp = JSON.stringify(localObj);
     localStorage.setItem(localObj.profile, temp);
     console.log("setToStore is working");
 };
-
+//FUNCTION TO GET FROM LOCAL STORAGE
 function getFromStore() {
     var tableStick = JSON.parse(localStorage.getItem(localObj.profile));
     if (tableStick != null) {
     var temp = tableStick.commList.allMyTables;
     reMakeTable(temp);
     }
+  console.log("getFromStore working");
 };
 getFromStore();
-
+// FUNCTION TO REMAKE THE TABLE
 function reMakeTable(temp) {
     for (var i=0; i<temp.length; i+=1) {
       var superTemp = TableMaker(temp[i].username, temp[i].age, temp[i].gender, temp[i].address, temp[i].contactNo, temp[i].meetUpLoc, temp[i].extraInfo)
     }
+  console.log("Remaking table");
 };
