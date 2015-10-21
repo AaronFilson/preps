@@ -16,7 +16,7 @@ for (var i=0; i<categories.length; i++) {
   console.log("Categories header working");
 }
 // OBJECT CONSTRUCTOR FOR EACH USER START
-var CList = function(username, age, gender, address, contactNo, meetUpLoc, extraInfo, key) {
+var cList = function(username, age, gender, address, contactNo, meetUpLoc, extraInfo, key) {
   this.username = username;
   this.age = age;
   this.gender = gender;
@@ -58,7 +58,7 @@ var newUserSubmit = function(e) {
   var newMeetUpLoc = document.getElementById('meetUpLoc');
   var newExtraInfo = document.getElementById('extraInfo');
 //CREATING NEW OBJECT
-  var newUserForm = new CList((newUser.value.toUpperCase()), newAge.value, (newGender.value.toUpperCase()), newAddress.value, newContactNo.value, newMeetUpLoc.value, newExtraInfo.value, Math.random());
+  var newUserForm = new cList((newUser.value.toUpperCase()), newAge.value, (newGender.value.toUpperCase()), newAddress.value, newContactNo.value, newMeetUpLoc.value, newExtraInfo.value, Math.random());
   console.log("Submit form working");
 //RESETTING FORM
   newUser.value = null;
@@ -70,7 +70,7 @@ var newUserSubmit = function(e) {
   newExtraInfo.value = null;
 };
 //TEST CONTACT INFO
-var Sab = new CList('SABRINA', 24, "FEMALE", "511 Boren Ave, Seattle, WA", "0123456789", "Primary: UW Secondary: SEATAC", "", 1);
+var Sab = new cList('SABRINA', 24, "FEMALE", "511 Boren Ave, Seattle, WA", "0123456789", "Primary: UW Secondary: SEATAC", "", 1);
 
 //EVENT HANDLER TO SUBMIT BUTTON
 var submitButton = document.getElementById('submitButton');
@@ -98,7 +98,7 @@ console.log(bob);
 // var UserInfo = function (perList, comListArg) {
 //     var personalizedList = new PList();
 //     personalizedList = perList;
-//     var commList = new CList();
+//     var commList = new cList();
 //     commList = comListArg;
 // };
 // // var localObj = new UserInfo({},{});
