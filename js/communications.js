@@ -76,9 +76,26 @@ var Sab = new CList('SABRINA', 24, "FEMALE", "511 Boren Ave, Seattle, WA", "0123
 var submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', newUserSubmit);
 
+// function populateStorage() {
+//   for (var i = 0; i<localStorage.length; i+=1){
+//     localStorage.getItem(localStorage.key(i));
+//     console.log(localStorage.getItem(localStorage.key(i)));
+//     var infoRow = document.createElement('tr');
+//     var contentInfoContact = document.createElement('td');
+//     contentInfoContact.appendChild(document.createTextNode(JSON.parse(localStorage.getItem(localStorage.key(i)))));
+//     infoRow.appendChild(contentInfoContact);
+//     contactColumn.appendChild(infoRow);
+//   }
+// }
+
+
 function populateStorage() {
-  contactInfo.onchange = populateStorage;
+  for (var i = 0; i < localStorage.length; i += 1) {
+    console.log(JSON.parse(localStorage[i]))
+  }
 }
+populateStorage();
+
 var bob = JSON.parse(localStorage.getItem("1"));
 console.log(bob);
 
