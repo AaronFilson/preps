@@ -1,5 +1,3 @@
-var keyVal = '';
-
 // HEADER OF CONTACT INFO TABLE START
 var contactColumn = document.getElementById("contactInfo");
 var headerRow = document.createElement('tr');
@@ -41,8 +39,6 @@ var TableMaker = function(username, age, gender, address, contactNo, meetUpLoc, 
     infoRow.appendChild(contentInfoContact);
     console.log("Pushing data of object properly");
     }
-  keyVal = this.username;
-  console.log("keyVal = "+keyVal);
 };
 
 //NEW USER SUBMIT FUNCTION
@@ -59,7 +55,7 @@ var newUserSubmit = function(e) {
   cList.allMyTables.push(new TableMaker((newUser.value.toUpperCase()), newAge.value, (newGender.value.toUpperCase()), newAddress.value, newContactNo.value, newMeetUpLoc.value, newExtraInfo.value));
   console.log("Submit form working");
 
-  localObj.setToStore();
+  setToStore();
 
 //RESETTING FORM
   newUser.value = null;
@@ -84,59 +80,33 @@ var cList = {
   allMyTables: []
 };
 
-console.log("cList"+cList);
-
 var UserInfo = function () {
-    var personalizedList = pList;
-    var commList = cList;
-    var profile = 'SABRINA';
+    this.personalizedList = pList;
+    this.commList = cList;
+    this.profile = 'SABRINA';
     console.log("UserInfo is running");
-};
-
-UserInfo.prototype.setToStore = function() {
-    var temp = JSON.stringify(this);
-    localStorage.setItem('SABRINA', temp);
-    console.log("setToStore is working");
-};
-
-UserInfo.prototype.getFromStore = function() {
-    JSON.parse(localStorage.getItem(keyVal));
-    console.log("getFromStore is working");
 };
 
 //RENDER USERINFO
 var localObj = new UserInfo();
 
-//LOCAL STORAGE
-// var saveAll = JSON.stringify(contactColumn);
-// localStorage.setItem(keyVal, saveAll);
-// var getInfo = JSON.parse(localStorage.getItem(keyVal));
-// console.log("Local storage working to save user");
+function setToStore() {
+    var temp = JSON.stringify(localObj);
+    localStorage.setItem(localObj.profile, temp);
+    console.log("setToStore is working");
+};
 
-// function populateStorage() {
-//   for (var i = 0; i<localStorage.length; i+=1){
-//     localStorage.getItem(localStorage.key(i));
-//     console.log(localStorage.getItem(localStorage.key(i)));
-//     var infoRow = document.createElement('tr');
-//     var contentInfoContact = document.createElement('td');
-//     contentInfoContact.appendChild(document.createTextNode(JSON.parse(localStorage.getItem(localStorage.key(i)))));
-//     infoRow.appendChild(contentInfoContact);
-//     contactColumn.appendChild(infoRow);
-//   }
-// }
-// populateStorage();
+function getFromStore() {
+    var tableStick = JSON.parse(localStorage.getItem(localObj.profile));
+    if (tableStick != null) {
+    var temp = tableStick.commList.allMyTables;
+    reMakeTable(temp);
+    }
+};
+getFromStore();
 
-// // var localObj = new UserInfo({},{});
-// UserInfo.prototype.getFromStore = function(key) {
-//     // key is magic number 1;
-//     var temp = localStorage.getItem(key);
-//     var unstringedTemp;
-//     if(temp != 'null') {
-//         unstringedTemp = JSON.parse(temp);
-//         var getSaves = localStorage.getItem(key);
-//         JSON.parse(getSaves);
-//     }
-//       this.personalizedList = unstringedTemp.personalizedList;
-//       this.commList = unstringedTemp.commList;
-//       JSON.parse(temp);
-// };
+function reMakeTable(temp) {
+    for (var i=0; i<temp.length; i+=1) {
+      var superTemp = TableMaker(temp[i].username, temp[i].age, temp[i].gender, temp[i].address, temp[i].contactNo, temp[i].meetUpLoc, temp[i].extraInfo)
+    }
+};
