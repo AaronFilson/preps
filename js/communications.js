@@ -41,12 +41,12 @@ var CList = function(username, age, gender, address, contactNo, meetUpLoc, extra
     console.log("Pushing data of object properly");
     }
 //LOCAL STORAGE
-  var InfoToSave = JSON.stringify(this.username+","+this.infoArray);
-  localStorage.setItem(this.key, this.username+","+this.infoArray);
-  var getInfo = localStorage.getItem(this.username+","+this.infoArray);
-  JSON.parse(getInfo);
-  console.log("Local storage working");
+  var infoToSave = JSON.stringify(this.username+","+this.infoArray);
+  localStorage.setItem(this.key, infoToSave);
+  var getInfo = JSON.parse(localStorage.getItem(this.username));
+  console.log("Local storage working to save user");
 };
+
 //NEW USER SUBMIT FUNCTION
 var newUserSubmit = function(e) {
   e.preventDefault();
@@ -69,7 +69,6 @@ var newUserSubmit = function(e) {
   newMeetUpLoc.value = "Primary: Secondary:";
   newExtraInfo.value = null;
 };
-
 //TEST CONTACT INFO
 var Sab = new CList('SABRINA', 24, "FEMALE", "511 Boren Ave, Seattle, WA", "0123456789", "Primary: UW Secondary: SEATAC", "", 1);
 
@@ -77,33 +76,45 @@ var Sab = new CList('SABRINA', 24, "FEMALE", "511 Boren Ave, Seattle, WA", "0123
 var submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', newUserSubmit);
 
+function populateStorage() {
+  for (var i = 0; i<localStorage.length; i+=1){
+    localStorage.getItem(localStorage.key(i));
+    console.log(localStorage.getItem(localStorage.key(i)));
+    var infoRow = document.createElement('tr');
+    var contentInfoContact = document.createElement('td');
+    contentInfoContact.appendChild(document.createTextNode(JSON.parse(localStorage.getItem(localStorage.key(i)))));
+    infoRow.appendChild(contentInfoContact);
+    contactColumn.appendChild(infoRow);
+  }
+}
+populateStorage();
+
+var bob = JSON.parse(localStorage.getItem("1"));
+console.log(bob);
+
 // LOCAL STORAGE SET TO LINK TO PAGE 2
-var PList = function() {
-};
-
-var UserInfo = function (perList, comListArg) {
-    var personalizedList = new PList();
-    personalizedList = perList;
-    var commList = new CList();
-    commList = comListArg;
-};
-
-// var localObj = new UserInfo({},{});
-
-UserInfo.prototype.setToStore = function() {
-    localStorage.setItem(commList[7], JSON.stringify(this));
-};
-
-UserInfo.prototype.getFromStore = function(key) {
-    // key is magic number 1;
-    var temp = localStorage.getItem(key);
-    var unstringedTemp;
-    if(temp != 'null') {
-        unstringedTemp = JSON.parse(temp);
-        var getSaves = localStorage.getItem(key);
-        JSON.parse(getSaves);
-    }
-      this.personalizedList = unstringedTemp.personalizedList;
-      this.commList = unstringedTemp.commList;
-      JSON.parse(temp);
-};
+// var PList = function() {
+// };
+// var UserInfo = function (perList, comListArg) {
+//     var personalizedList = new PList();
+//     personalizedList = perList;
+//     var commList = new CList();
+//     commList = comListArg;
+// };
+// // var localObj = new UserInfo({},{});
+// UserInfo.prototype.setToStore = function() {
+//     localStorage.setItem(commList[7], JSON.stringify(this));
+// };
+// UserInfo.prototype.getFromStore = function(key) {
+//     // key is magic number 1;
+//     var temp = localStorage.getItem(key);
+//     var unstringedTemp;
+//     if(temp != 'null') {
+//         unstringedTemp = JSON.parse(temp);
+//         var getSaves = localStorage.getItem(key);
+//         JSON.parse(getSaves);
+//     }
+//       this.personalizedList = unstringedTemp.personalizedList;
+//       this.commList = unstringedTemp.commList;
+//       JSON.parse(temp);
+// };
