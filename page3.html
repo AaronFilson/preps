@@ -6,11 +6,14 @@
   <link rel="icon" type="image/png" href="img/mountains.png">
 
   <head>
+    <title>Communication Plan</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
   </head>
 
   <body>
-
   <header>
     <nav id="navBar">
     <ul>
@@ -22,6 +25,7 @@
     </ul>
     </nav>
   </header>
+
 
     <h3>Plan for DAYS/WEEKS/MONTHS of disruptions</h3>
     <hr />
@@ -47,24 +51,46 @@
         <a href="http://www.whathappensnow.com/articles_show.cfm?id=64&cat=4&sub=5">
           <h3>News and Information</h3></a>
 
-      </section>
+  <article>
+    <h1>A Communication Plan</h1>
+    <p>Earthquakes can strike at any time and without warning. Friends and families can cope with earthquakes by preparing in advance.</p>
+    <p>Enter your contact information below and share with friends and family so that in event of an earthquake, you are able to reunite and know each other's emergency plan in advance.</p>
+    <form id="commForm">
+      <fieldset>
+      <legend>Contact Details</legend>
+      <label>Name:<br/>
+        <input id="username" type="text" name="username"maxlength="50" />
+      </label>
+      <label>Age:<br/>
+        <input id="age" type="text" name="age" maxlength="2"/>
+      </label>
+      <label>Gender:<br/>
+        <input id="gender" type="text" name="gender" maxlength="6"/>
+      </label>
+      <label>Address:</label>
+        <textarea id="address" name="address" cols="50" rows="4"></textarea>
+      <label>Contact Number:
+        <input id="contactNo" type="text" name="contactNo"maxlength="10" />
+      </label>
+      <label>Meet Up Locations</label>
+      <label>Pick two places to meet up with your family - clearly state a primary and secondary location:</label><br/>
+      <textarea id="meetUpLoc" name="meetUpLoc" cols="50" rows="6">Primary:
+Secondary: </textarea>
+      <label>Additional Information</label>
+      <label>Anything else you want people to know? Enter extra emergency details here:</label>
+      <textarea name="extraInfo" cols="50" rows="10" id="extraInfo"></textarea><br/>
+      <input id="submitButton" type="submit" name="submit" value="Submit" />
+      </fieldset>
+    </form>
+  </article>
 
-      <section class="where-impact"><h2>Navigating Through Community Chaos</h2>
-        <a href="http://webcache.googleusercontent.com/search?q=cache:http://firefightersforgood.org/disaster-preparedness-tips-to-getting-around-after-a-disaster/">
-          <h3>Transportation</h3></a>
-        <a href="https://www.medicare.gov/what-medicare-covers/getting-care-and-drugs-in-disasters-or-emergencies.html">
-          <h3>Medical Care</h3></a>
-        <a href="http://center.serve.org/nche/downloads/dis_hb/parents.pdf">
-          <h3>Schools</h3></a>
-        <a href="http://www.redcross.org/find-help/disaster-recovery/recovering-financially">
-          <h3>Banking</h3></a>
-        <a href="http://eecentre.org/DisasterWasteManagementGuidelines.aspx">
-          <h3>Waste Disposal</h3></a>
-      </section>
+  <article>
+    <p>Contact Information:
+      <table id="contactInfo">
+      </table>
+    </p>
+  </article>
 
-    <script src='js/scrollReveal.js'></script>
-    <script>
-      window.sr = new scrollReveal();
-    </script>
+  <script type="text/javascript" src="js/communications.js"></script>
   </body>
 </html>
