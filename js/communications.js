@@ -51,7 +51,11 @@ var newUserSubmit = function(e) {
   var newMeetUpLoc = document.getElementById('meetUpLoc');
   var newExtraInfo = document.getElementById('extraInfo');
 //CREATING NEW OBJECT
+  console.log("allMyTables before push: ");
+  console.dir(cList.allMyTables);
   cList.allMyTables.push(new TableMaker((newUser.value.toUpperCase()), newAge.value, (newGender.value.toUpperCase()), newAddress.value, newContactNo.value, newMeetUpLoc.value, newExtraInfo.value));
+  console.log("allMyTables after push: ");
+  console.dir(cList.allMyTables);
   profile = newUser.value.toUpperCase();
   console.log("New profile name: "+profile);
   console.log("Submit form working");
@@ -78,6 +82,7 @@ var pList = {
 var cList = {
   allMyTables: []
 };
+console.log("allMyTables after create "+cList.allMyTables);
 //PROFILE CONSTRUCTOR
 var UserInfo = function () {
     this.personalizedList = pList;
@@ -94,15 +99,20 @@ function setToStore() {
     console.log("setToStore is working");
 };
 //FUNCTION TO GET FROM LOCAL STORAGE
-function getFromStore() {
-    var tableStick = JSON.parse(localStorage.getItem(localObj.profile));
-    if (tableStick != null) {
-    var temp = tableStick.commList.allMyTables;
-    reMakeTable(temp);
+UserInfo.prototype.getFromStore = function (username) {
+    var temp = localStorage.getItem(username);
+    var unstringedTemp;
+    if(temp != null) {
+      unstringedTemp = JSON.parse(temp);
+      this.commList = unstringedTemp.commList;
+      cList = unstringedTemp.commList;
+      reMakeTable(cList.allMyTables);
     }
+  console.log("allMyTables in getFromStore: ");
+  // console.dir(tableStick.commList.allMyTables);
   console.log("getFromStore working");
 };
-getFromStore();
+localObj.getFromStore("SABRINA");
 // FUNCTION TO REMAKE THE TABLE
 function reMakeTable(temp) {
     for (var i=0; i<temp.length; i+=1) {
