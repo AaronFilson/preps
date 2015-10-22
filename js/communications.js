@@ -110,3 +110,4 @@ function reMakeTable(temp) {
       var superTemp = TableMaker(temp[i].username, temp[i].age, temp[i].gender, temp[i].address, temp[i].contactNo, temp[i].meetUpLoc, temp[i].extraInfo)
     }
 };
+
