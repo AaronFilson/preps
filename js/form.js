@@ -83,7 +83,20 @@ UserInfo.prototype.updateForm = function() {
 	loopback();//make the local store happen
 };
 
+UserInfo.prototype.resetTheCheckBoxes = function(eventarg) {
+		
+	pList.houseList[0] = false;
+	pList.aprtList[0] = false;
+	pList.driveList[0] = false;
+	pList.medList[0] = false;
+	document.getElementById("customPrepList").innerHTML=null;
+
+
+	loopback();
+};
+
 var submitButtonOnPageTwo = document.getElementById('oneButton');
+var resetButtonOnPageTwo = document.getElementById('resetButton');
 
 var localObj = new UserInfo();
 localObj.username = 'Sabrina';
@@ -104,3 +117,4 @@ localObj.getFromStore(localObj.username); // Every time the page loads, call up 
 console.log('Reaching the end of the js file, and the current value of the UserInfo instance localObj is: ');
 console.dir(localObj); //show us what the loaded object is
 submitButtonOnPageTwo.addEventListener('click', localObj.updateForm);
+resetButtonOnPageTwo.addEventListener('click', localObj.resetTheCheckBoxes);
