@@ -94,7 +94,7 @@ article div p {
 }
 /*NAV BAR STUFF END*/
 
-/*PAGE 3 STYLING*/
+/*PAGE 3 STYLING START*/
 .page3Pix {
   width:100%;
 }
@@ -102,3 +102,11 @@ article div p {
 .page3Head {
   text-align: center;
 }
+/*PAGE 3 STYLING END*/
+
+/*PAGE 4 STYLING START*/
+.page4text {
+  font-size:20px;
+  text-align: justify;
+}
+/*PAGE 4 STYLING END*/
