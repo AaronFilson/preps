@@ -33,9 +33,6 @@ function nextQuickItem(){
       if(anIndex >= quickList.length) {
             anIndex = 0;
       }
-      //Print item from quick list.
-/*      var printIndex = document.getElementById('qlist');*/
       printIndex.textContent = quickList[anIndex];
 }
-
 printNextQuickItem.addEventListener('click', nextQuickItem);
