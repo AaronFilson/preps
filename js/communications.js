@@ -15,7 +15,7 @@ for (var i=0; i<categories.length; i++) {
   headerRow.appendChild(categoriesHeader);
   console.log("Categories header working");
 }
-// OBJECT CONSTRUCTOR FOR EACH USER START
+// OBJECT CONSTRUCTOR FOR EACH START
 var TableMaker = function(username, age, gender, address, contactNo, meetUpLoc, extraInfo) {
   this.username = username;
   this.age = age;
@@ -25,14 +25,14 @@ var TableMaker = function(username, age, gender, address, contactNo, meetUpLoc, 
   this.meetUpLoc = meetUpLoc;
   this.extraInfo = extraInfo;
   this.infoArray = [age, gender, address, contactNo, meetUpLoc, extraInfo];
-//CREATING TABLE ROW FOR NEW USER
+  //CREATING TABLE ROW FOR NEW 
   var infoRow = document.createElement('tr');
   var userNameRow = document.createElement('td');
   userNameRow.appendChild(document.createTextNode(this.username));
   infoRow.appendChild(userNameRow);
   contactColumn.appendChild(infoRow);
   console.log("Place row working");
-//PUSHING OBJECT TO TABLE
+  //PUSHING OBJECT TO TABLE
   for (var i=0; i<categories.length; i++) {
     var contentInfoContact = document.createElement('td');
     contentInfoContact.appendChild(document.createTextNode(this.infoArray[i]));
@@ -50,10 +50,11 @@ var newUserSubmit = function(e) {
   var newContactNo = document.getElementById('contactNo');
   var newMeetUpLoc = document.getElementById('meetUpLoc');
   var newExtraInfo = document.getElementById('extraInfo');
+  var idOfTheHtmlTable = document.getElementById('contactInfo');
 //CREATING NEW OBJECT
   console.log("allMyTables before push: ");
   console.dir(cList.allMyTables);
-  cList.allMyTables.push(new TableMaker((newUser.value.toUpperCase()), newAge.value, (newGender.value.toUpperCase()), newAddress.value, newContactNo.value, newMeetUpLoc.value, newExtraInfo.value));
+  cList.allMyTables.push(new TableMaker((newUser.value.toUpperCase()), newAge.value, (newGender.value.toUpperCase()), newAddress.value, newContactNo.value, newMeetUpLoc.value, newExtraInfo.value, idOfTheHtmlTable));
   console.log("allMyTables after push: ");
   console.dir(cList.allMyTables);
   profile = newUser.value.toUpperCase();
@@ -70,14 +71,10 @@ var newUserSubmit = function(e) {
   newMeetUpLoc.value = "Primary: Secondary:";
   newExtraInfo.value = null;
 };
-//TEST CONTACT INFO
-// var Sab = new TableMaker('SABRINA', 24, "FEMALE", "511 Boren Ave, Seattle, WA", "0123456789", "Primary: UW Secondary: SEATAC", "");
 //EVENT HANDLER TO SUBMIT BUTTON
 var submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', newUserSubmit);
-//PLACE HOLDER FOR PAGE2 LOCAL STORE
-var pList = {
-};
+
 //CREATING PAGE4 LOCAL STORE UNDER USERINFO
 var cList = {
   allMyTables: []
@@ -87,17 +84,13 @@ console.log("allMyTables after create "+cList.allMyTables);
 var UserInfo = function () {
     this.personalizedList = pList;
     this.commList = cList;
-    this.profile = 'SABRINA';
+    this.profileName = '';
     console.log("UserInfo is running");
 };
 //VARIABLE THAT CREATES A NEW PROFILE CONSTRUCTOR
 var localObj = new UserInfo();
-//FUNCTION TO SAVE TO LOCAL STORAGE
-function setToStore() {
-    var temp = JSON.stringify(localObj);
-    localStorage.setItem(localObj.profile, temp);
-    console.log("setToStore is working");
-};
+localObj.profileName = "SABRINA";
+
 //FUNCTION TO GET FROM LOCAL STORAGE
 UserInfo.prototype.getFromStore = function (username) {
     var temp = localStorage.getItem(username);
@@ -112,12 +105,9 @@ UserInfo.prototype.getFromStore = function (username) {
   // console.dir(tableStick.commList.allMyTables);
   console.log("getFromStore working");
 };
-localObj.getFromStore("SABRINA");
-// FUNCTION TO REMAKE THE TABLE
-function reMakeTable(temp) {
-    for (var i=0; i<temp.length; i+=1) {
-      var superTemp = TableMaker(temp[i].username, temp[i].age, temp[i].gender, temp[i].address, temp[i].contactNo, temp[i].meetUpLoc, temp[i].extraInfo)
+localObj.getFromStore(this.profileName);
+function reMakeTable(littleArray) {
+    for (var i=0; i<littleArray.length; i+=1) {
+      var superTemp = TableMaker(littleArray[i].username, littleArray[i].age, littleArray[i].gender, littleArray[i].address, littleArray[i].contactNo, littleArray[i].meetUpLoc, littleArray[i].extraInfo)
     }
-  console.log("Remaking table");
 };
-
