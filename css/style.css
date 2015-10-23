@@ -43,17 +43,14 @@ article div p {
   font-family: Garamond;
 }
 
-/*ABOUT US PAGE START*/
 .bioPic {
   width: 145px;
   border-radius: 100px;
   text-align: center;
-  margin:40px;
+  margin: 40px;
   border: solid black 4px;
 }
-/*ABOUT US PAGE END*/
 
-/*NAV BAR STUFF START*/
 .activePage {
   background-color: #ACCFCC;
 }
@@ -92,27 +89,29 @@ article div p {
   letter-spacing: 0.1em;
   position: relative;
 }
-/*NAV BAR STUFF END*/
 
-/*PAGE 2 STYLING START*/
+.animQList {
+  text-align: center;
+}
+
 #FEMApic {
  width: 150%;
 }
-/*PAGE 2 STYLING END*/
 
-/*PAGE 3 STYLING START*/
+section p {
+  font-size: 20px;
+  text-align: left;
+}
+
 .page3Pix {
-  width:100%;
+  width: 100%;
 }
 
 .page3Head {
   text-align: center;
 }
-/*PAGE 3 STYLING END*/
 
-/*PAGE 4 STYLING START*/
 .page4text {
-  font-size:20px;
+  font-size: 20px;
   text-align: justify;
 }
-/*PAGE 4 STYLING END*/
