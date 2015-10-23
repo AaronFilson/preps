@@ -16,8 +16,23 @@ function randomNumber() {
 }
 
 //Pick item from quick list.
-var pickItem = quickList[randomNumber()];
+var anIndex = randomNumber();
+var pickIndex = quickList[anIndex];
 
 //Print item from quick list.
-var printItem = document.getElementById('qlist');
-printItem.textContent = pickItem;
+var printIndex = document.getElementById('qlist');
+printIndex.textContent = pickIndex;
+
+
+//Clicking the Next button advances to the next sequential index item in the array
+var printNextQuickItem = document.getElementById('nextQuickListButton');
+
+function nextQuickItem(){
+
+      anIndex++;
+      if(anIndex >= quickList.length) {
+            anIndex = 0;
+      }
+      printIndex.textContent = quickList[anIndex];
+}
+printNextQuickItem.addEventListener('click', nextQuickItem);
